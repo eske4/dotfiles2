@@ -2,7 +2,7 @@
 
 # 1. TRIGGER: This script re-runs if the logic OR the package list changes
 # script hash: {{ include "scripts/sync-arch.sh" | sha256sum }}
-# list hash:   {{ include "packages.txt" | sha256sum }}
+# list hash:   {{ include "packages/pkglist-arch.txt" | sha256sum }}
 
 {{ if eq .chezmoi.os "linux" -}}
     {{ if eq .chezmoi.osRelease.id "arch" -}}
@@ -10,7 +10,7 @@
         echo ":: Arch Linux detected. Starting sync..."
         
         SYNC_SCRIPT="{{ .chezmoi.sourceDir }}/scripts/sync-arch.sh"
-        PKG_LIST="{{ .chezmoi.sourceDir }}/pkglist-arch.txt"
+        PKG_LIST="{{ .chezmoi.sourceDir }}/packages/pkglist-arch.txt"
         
         # Ensure the script is executable just in case
         chmod +x "$SYNC_SCRIPT"
