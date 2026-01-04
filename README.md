@@ -2,7 +2,7 @@
 
 My personal Arch Linux + Hyprland and Noctalia dotfile configuration, managed with chezmoi.
 
-![Desktop Screenshot](https://raw.githubusercontent.com/eske4/dotfiles/main/assets/desktop.png)
+![Desktop Screenshot](assets/desktop.png)
 
 ---
 
