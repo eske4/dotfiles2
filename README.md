@@ -35,7 +35,7 @@ chezmoi init --apply https://github.com/eske4/dotfiles
 ---
 
 ### Core Environment
-* **Compositor:** Hyprland (git)
+* **Compositor:** Hyprland
 * **Shell/UI:** Noctalia-shell
 * **Display Manager:** SDDM
 * **Toolkit:** GTK
