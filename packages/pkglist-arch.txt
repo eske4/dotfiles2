@@ -6,6 +6,7 @@ gnome-disk-utility
 xdg-user-dirs
 xdg-utils 
 archlinux-xdg-menu
+fzf
 
 # Graphics
 qt5-wayland 

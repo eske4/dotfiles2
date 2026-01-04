@@ -43,18 +43,4 @@ if [[ "$SHELL" != */zsh ]]; then
     chsh -s "$(which zsh)"
 fi
 
-# # 8. Hyprland Plugins logic
-if command -v hyprland &> /dev/null && command -v hyprpm &> /dev/null; then
-    if ! hyprpm list | grep -q "hyprland-plugins"; then
-        msg "Installing Hyprland plugins..."
-        hyprpm update
-        yes | hyprpm add https://github.com/hyprwm/hyprland-plugins
-    fi
-
-    echo ":: Syncing Hyprland plugins..."
-    hyprpm update
-    hyprpm enable hyprexpo
-    hyprpm enable hyprbars
-fi
-
 echo ":: Sync completed"
