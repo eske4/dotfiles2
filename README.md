@@ -24,7 +24,7 @@ chezmoi init --apply https://github.com/eske4/dotfiles
    - Place your own images in `~/Pictures/Wallpapers`.
 3. **Hyprbars (Optional)**: To enable Windows-like window decorations, uncomment the rules in `.config/hypr/window-rules` and install the plugin:
    ```bash
-   hyprpm add [https://github.com/hyprwm/hyprland-plugins](https://github.com/hyprwm/hyprland-plugins)
+   hyprpm add https://github.com/hyprwm/hyprland-plugins
    hyprpm enable hyprbars
    ```
 4. **Browser Theming(Optional)**: To apply the theme to Firefox or LibreWolf:
