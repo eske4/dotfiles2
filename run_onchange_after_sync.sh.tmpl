@@ -1,22 +1,31 @@
 #!/bin/bash
 
-# 1. TRIGGER: This script re-runs if the logic OR the package list changes
+# TRIGGER: This script re-runs if the logic OR the package list changes
 # script hash: {{ include "scripts/sync-arch.sh" | sha256sum }}
 # list hash:   {{ include "packages/pkglist-arch.txt" | sha256sum }}
 
-{{ if eq .chezmoi.os "linux" -}}
-    {{ if eq .chezmoi.osRelease.id "arch" -}}
+{{ if and (eq .chezmoi.os "linux") (eq .chezmoi.osRelease.id "arch") -}}
 
-        echo ":: Arch Linux detected. Starting sync..."
-        
-        SYNC_SCRIPT="{{ .chezmoi.sourceDir }}/scripts/sync-arch.sh"
-        PKG_LIST="{{ .chezmoi.sourceDir }}/packages/pkglist-arch.txt"
-        
-        # Ensure the script is executable just in case
-        chmod +x "$SYNC_SCRIPT"
-        
-        # Execute the worker script
-        bash "$SYNC_SCRIPT" "$PKG_LIST"
+# 1. Define paths using chezmoi's sourceDir
+SYNC_SCRIPT={{ joinPath .chezmoi.sourceDir "scripts/sync-arch.sh" | quote }}
+PKG_LIST={{ joinPath .chezmoi.sourceDir "packages/pkglist-arch.txt" | quote }}
 
-    {{ end }}
-{{ end }}
+# 2. Gatekeeper Prompt
+# Using /dev/tty ensures interactivity during 'chezmoi apply'
+echo ":: Package list update/sync detected."
+read -p "   Do you want to sync system packages now? (y/N): " confirm
+
+if [[ "$confirm" =~ ^[Yy]$ ]]; then
+    echo ":: Starting Arch Linux package sync..."
+    
+    # Ensure script is executable
+    chmod +x "$SYNC_SCRIPT"
+    
+    # Execute the worker script
+    bash "$SYNC_SCRIPT" "$PKG_LIST"
+else
+    echo ":: Skipping package sync. Proceeding with config linking only..."
+fi
+
+{{ end -}}
+

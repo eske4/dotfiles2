@@ -3,17 +3,6 @@
 # 1. Capture the argument
 PACKAGES_FILE="$1"
 
-# --- NEW: GATEKEEPER PROMPT ---
-# We redirect from /dev/tty to ensure it works during a chezmoi apply
-echo ":: Package list update/sync detected."
-read -p "   Do you want to sync system packages now? (y/N): " confirm < /dev/tty
-
-if [[ ! "$confirm" =~ ^[Yy]$ ]]; then
-    echo ":: Skipping package sync. Proceeding with config linking only..."
-    exit 0
-fi
-# ------------------------------
-
 # 2. Check if the argument was provided and if the file exists
 if [[ -z "$PACKAGES_FILE" ]]; then
     echo "Error: No package list path provided."
