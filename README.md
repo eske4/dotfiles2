@@ -30,7 +30,7 @@ chezmoi init --apply https://github.com/eske4/dotfiles
 4. **Browser Theming(Optional)**: To apply the theme to Firefox or LibreWolf:
    - Install Pywalfox: `yay -S python-pywalfox`
    - Install the [Pywalfox Browser Extension](https://addons.mozilla.org/en-US/firefox/addon/pywalfox/).
-5. **Discord (Optional)**: Discord theming is supported. Refer to the Noctalia documentation for setup details.
+5. **Discord (Optional)**: Discord theming is supported. Refer to the [Noctalia documentation](https://docs.noctalia.dev) for setup details.
 
 ---
 
